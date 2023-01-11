@@ -1,0 +1,22 @@
+{
+  "name": "server_tda_p4",
+  "version": "1.0.0",
+  "description": "backend serer for tda project 4",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/son1122/Backend-P4.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/son1122/Backend-P4/issues"
+  },
+  "homepage": "https://github.com/son1122/Backend-P4#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
