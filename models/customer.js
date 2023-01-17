@@ -1,6 +1,6 @@
 'use strict';
 const {
-    Model
+  Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
     class Customer extends Model {
@@ -10,7 +10,15 @@ module.exports = (sequelize, DataTypes) => {
          * The `models/index` file will call this method automatically.
          */
         static associate(models) {
-            // define association here
+            Customer.hasMany(models.CustomerInsurance, {
+                foreignKey: "customerId"
+            })
+            Customer.hasMany(models.CustomerClaim, {
+                foreignKey: "customerId"
+            })
+            Customer.hasMany(models.LocationId, {
+                foreignKey: "customerId"
+            })
         }
     }
 

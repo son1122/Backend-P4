@@ -1,6 +1,6 @@
 'use strict';
 const {
-    Model
+  Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
     class Admin extends Model {
@@ -11,6 +11,13 @@ module.exports = (sequelize, DataTypes) => {
          */
         static associate(models) {
             // define association here
+            // Chef.belongsToMany(models.MenuItem, {
+            //   through: "ChefMenu",
+            //   foreignKey: "chefId",
+            //   otherKey: "menuItemId",
+            // });
+
+
         }
     }
 
