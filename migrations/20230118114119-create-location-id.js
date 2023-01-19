@@ -2,53 +2,62 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('CustomerInsurances', {
+    await queryInterface.createTable('LocationIds', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
+      address: {
+        type: Sequelize.STRING
+      },
+      mhuui: {
+        type: Sequelize.INTEGER
+      },
+      village: {
+        type: Sequelize.STRING
+      },
+      road: {
+        type: Sequelize.STRING
+      },
+      subdistrict: {
+        type: Sequelize.STRING
+      },
+      district: {
+        type: Sequelize.STRING
+      },
+      province: {
+        type: Sequelize.STRING
+      },
+      postalCode: {
+        type: Sequelize.INTEGER
+      },
+      country: {
+        type: Sequelize.STRING
+      },
+      lat: {
+        type: Sequelize.DOUBLE
+      },
+      lng: {
+        type: Sequelize.DOUBLE
+      },
       customerId: {
         type: Sequelize.INTEGER
       },
-      insuranceId: {
-        type: Sequelize.INTEGER
-      },
-      insuranceType: {
-        type: Sequelize.STRING
-      },
-      priceFinal: {
-        type: Sequelize.INTEGER
-      },
-      status: {
-        type: Sequelize.STRING
-      },
-      riskPersonalId: {
-        type: Sequelize.INTEGER
-      },
-      riskLocalizationId: {
-        type: Sequelize.INTEGER
-      },
-      startDate: {
-        type: Sequelize.DATE
-      },
-      endDate: {
-        type: Sequelize.DATE
-      },
       createdAt: {
-        defaultValue:new Date(),
+        defaultValue : new Date(),
         allowNull: false,
         type: Sequelize.DATE
       },
       updatedAt: {
-        defaultValue:new Date(),
+        defaultValue : new Date(),
         allowNull: false,
         type: Sequelize.DATE
       }
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('CustomerInsurances');
+    await queryInterface.dropTable('LocationIds');
   }
 };

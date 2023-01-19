@@ -10,7 +10,6 @@ const cors = require("cors");
 const app = express();
 const routes = require("./routes");
 
-//middleware-every request goes through it
 app.use(cors());
 app.use(bodyParser);
 app.use(cookieParser());
@@ -40,10 +39,11 @@ const verifyToken = (req, res, next) => {
 // app.use("/table", verifyToken, routes.table);
 // app.use("/menu_items", verifyToken, routes.menuitems);
 // app.use("/orderdetail", verifyToken, routes.orderdetail);
-// app.use("/dashboard", verifyToken, routes.dashboard);
+app.use("/dashboard", routes.dashboard);
+app.use("/admin", routes.admin);
 // app.use("/auth", routes.auth);
 // app.use("/api", verifyToken, routes.api);
-// app.use("/customer", routes.customer);
+app.use("/customer", routes.customer);
 
 
 app.listen(process.env.PORT, () => {

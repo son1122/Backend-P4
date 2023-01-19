@@ -11,18 +11,8 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      CarClaim.belongsTo(models.Customer, {
-        foreignKey: "customerId"
-      })
-      CarClaim.belongsTo(models.CarModel, {
-        foreignKey: "carModelId"
-      })
-      CarClaim.belongsTo(models.CarInsuranceId, {
-        foreignKey: "insuranceId"
-      })
     }
   }
-
   CarClaim.init({
     customerId: DataTypes.INTEGER,
     insuranceId: DataTypes.INTEGER,

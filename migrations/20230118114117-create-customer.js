@@ -2,62 +2,53 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('LocationIds', {
+    await queryInterface.createTable('Customers', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      address: {
+      username: {
         type: Sequelize.STRING
       },
-      mhuui: {
+      password: {
+        type: Sequelize.STRING
+      },
+      email: {
+        type: Sequelize.STRING
+      },
+      phone: {
+        type: Sequelize.STRING
+      },
+      firstname: {
+        type: Sequelize.STRING
+      },
+      lastname: {
+        type: Sequelize.STRING
+      },
+      userIdType: {
         type: Sequelize.INTEGER
       },
-      village: {
+      userId: {
         type: Sequelize.STRING
       },
-      road: {
-        type: Sequelize.STRING
-      },
-      subdistrict: {
-        type: Sequelize.STRING
-      },
-      district: {
-        type: Sequelize.STRING
-      },
-      province: {
-        type: Sequelize.STRING
-      },
-      postalCode: {
-        type: Sequelize.INTEGER
-      },
-      country: {
-        type: Sequelize.STRING
-      },
-      lat: {
-        type: Sequelize.DOUBLE
-      },
-      lng: {
-        type: Sequelize.DOUBLE
-      },
-      customerId: {
-        type: Sequelize.INTEGER
+      DOB: {
+        type: Sequelize.DATE
       },
       createdAt: {
-        defaultValue:new Date(),
         allowNull: false,
+        defaultValue : new Date(),
         type: Sequelize.DATE
       },
       updatedAt: {
-        defaultValue:new Date(),
+        defaultValue : new Date(),
         allowNull: false,
         type: Sequelize.DATE
       }
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('LocationIds');
+    await queryInterface.dropTable('Customers');
   }
 };

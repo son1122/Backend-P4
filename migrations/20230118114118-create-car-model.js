@@ -19,12 +19,12 @@ module.exports = {
         type: Sequelize.STRING
       },
       createdAt: {
-        defaultValue:new Date(),
+        defaultValue : new Date(),
         allowNull: false,
         type: Sequelize.DATE
       },
       updatedAt: {
-        defaultValue:new Date(),
+        defaultValue : new Date(),
         allowNull: false,
         type: Sequelize.DATE
       }

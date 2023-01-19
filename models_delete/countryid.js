@@ -11,15 +11,8 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      CountryId.belongsTo(models.RiskLocalization, {
-        // foreignKey: "countryId"
-      })
-      CountryId.belongsTo(models.RiskPersonal, {
-        // foreignKey: "countryId"
-      })
     }
   }
-
   CountryId.init({
     countryCode: DataTypes.STRING,
     countryName: DataTypes.STRING

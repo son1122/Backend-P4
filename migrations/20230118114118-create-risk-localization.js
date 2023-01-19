@@ -2,32 +2,41 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('CountryIds', {
+    await queryInterface.createTable('RiskLocalizations', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      countryCode: {
-        type: Sequelize.STRING
+      countryId: {
+        type: Sequelize.INTEGER
       },
-      countryName: {
-        type: Sequelize.STRING
+      value: {
+        type: Sequelize.INTEGER
+      },
+      year: {
+        type: Sequelize.INTEGER
+      },
+      healthRisk: {
+        type: Sequelize.INTEGER
+      },
+      carRisk: {
+        type: Sequelize.INTEGER
       },
       createdAt: {
-        defaultValue:new Date(),
+        defaultValue : new Date(),
         allowNull: false,
         type: Sequelize.DATE
       },
       updatedAt: {
-        defaultValue:new Date(),
+        defaultValue : new Date(),
         allowNull: false,
         type: Sequelize.DATE
       }
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('CountryIds');
+    await queryInterface.dropTable('RiskLocalizations');
   }
 };

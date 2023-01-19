@@ -19,14 +19,15 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       createdAt: {
-        defaultValue:new Date(),
+        defaultValue : new Date(),
         allowNull: false,
         type: Sequelize.DATE
       },
       updatedAt: {
-        defaultValue:new Date(),
+        defaultValue : new Date(),
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+
       }
     });
   },

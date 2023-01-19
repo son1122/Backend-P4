@@ -11,15 +11,8 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      RiskPersonal.hasMany(models.CustomerInsurance, {
-        foreignKey: "riskPersonalId"
-      })
-      RiskPersonal.belongsTo(models.CountryId, {
-        foreignKey: "countryId"
-      })
     }
   }
-
   RiskPersonal.init({
     countryId: DataTypes.INTEGER,
     value: DataTypes.INTEGER,

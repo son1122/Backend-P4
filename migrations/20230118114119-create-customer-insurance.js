@@ -2,41 +2,53 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('RiskLocalizations', {
+    await queryInterface.createTable('CustomerInsurances', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      countryId: {
+      customerId: {
         type: Sequelize.INTEGER
       },
-      value: {
+      insuranceId: {
         type: Sequelize.INTEGER
       },
-      year: {
+      insuranceType: {
+        type: Sequelize.STRING
+      },
+      priceFinal: {
         type: Sequelize.INTEGER
       },
-      healthRisk: {
+      status: {
+        type: Sequelize.STRING
+      },
+      riskPersonalId: {
         type: Sequelize.INTEGER
       },
-      carRisk: {
+      riskLocalizationId: {
         type: Sequelize.INTEGER
+      },
+      startDate: {
+        type: Sequelize.DATE
+      },
+      endDate: {
+        type: Sequelize.DATE
       },
       createdAt: {
-        defaultValue:new Date(),
+        defaultValue : new Date(),
         allowNull: false,
         type: Sequelize.DATE
       },
       updatedAt: {
-        defaultValue:new Date(),
+        defaultValue : new Date(),
         allowNull: false,
         type: Sequelize.DATE
       }
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('RiskLocalizations');
+    await queryInterface.dropTable('CustomerInsurances');
   }
 };

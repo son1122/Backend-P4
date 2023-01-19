@@ -11,14 +11,16 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      CarInsuranceId.hasMany(models.CarModel, {
+      CarInsuranceId.belongsTo(models.CarModel, {
         foreignKey: "carModelId"
       })
-      CarInsuranceId.hasMany(models.CarInsuranceType, {
+      CarInsuranceId.belongsTo(models.CarInsuranceType, {
         foreignKey: "carInsuranceTypeId"
       })
-      CarInsuranceId.belongsTo(models.CustomerInsurance, {
-        foreignKey: "carInsuranceId"
+      CarInsuranceId.belongsToMany(models.Customer, {
+        through:"CustomerInsurance",
+        foreignKey:"insuranceId",
+        otherKey:"customerId",
       })
     }
   }
