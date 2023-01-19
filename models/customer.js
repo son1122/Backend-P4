@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
                 foreignKey: "customerId"
             })
             Customer.hasMany(models.LocationId, {
-                foreignKey: "locationId"
+                foreignKey: "customerId"
             })
             Customer.belongsToMany(models.CustomerInsurance, {
                 through:"CustomerInsurance",
