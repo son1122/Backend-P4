@@ -35,6 +35,8 @@ module.exports = (sequelize, DataTypes) => {
     status: DataTypes.STRING,
     riskPersonalId: DataTypes.INTEGER,
     riskLocalizationId: DataTypes.INTEGER,
+    plate:DataTypes.STRING,
+    province:DataTypes.STRING,
     startDate: DataTypes.DATE,
     endDate: DataTypes.DATE
   }, {
