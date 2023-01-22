@@ -18,5 +18,7 @@ router.put("/edit", ctrl.customer.edit);
 router.delete("/user", ctrl.customer.deleteUser);
 router.get("/getcaryear", ctrl.customer.getCarYear);
 router.post("/newinsure", ctrl.customer.newInsure);
+router.get("/dashboarddata", ctrl.customer.dashboardData);
+router.get("/claim", ctrl.customer.claim);
 
 module.exports = router;

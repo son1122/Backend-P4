@@ -104,11 +104,9 @@ const getCarBrand= async (req, res) => {
 const getCarModel= async (req, res) => {
     try {
         await CarModel.findAll({
-            attributes: ["model"],
-            where:{year:req.params.year,brand:req.params.brand}
+            // limit:10
         }).then((array) => {
             res.json(array);
-
         });
     } catch (err) {
         console.log(err);
@@ -348,7 +346,55 @@ const deleteUser = async (req, res) => {
         User.destroy({ where: { id: decodedUser.id } });
     });
 };
+const dashboardData=(req,res)=>{
+    user={}
+    CustomerInsurance.findAll({
+    }).then(insure=> {
+        res.json(insure)
+    })
+}
+const claim=(req,res)=>{
+    CarClaim.findAll().then(claim=>{
+        res.json(claim)
+    })
+}
+const addCar=(req,res)=>{
+    CarModel.create({
+        year:req.body.year,
+        model:req.body.model,
+        brand:req.body.brand
+    }).then(e=>{
+        CarInsuranceId.create({
+            carModelId:e.dataValues.id,
+            carInsuranceTypeId:1,
+            price:req.body.type1
+        }).then(
+            CarInsuranceId.create({
+                carModelId:e.dataValues.id,
+                carInsuranceTypeId:2,
+                price:req.body.type2
+            }).then(        CarInsuranceId.create({
+                carModelId:e.dataValues.id,
+                carInsuranceTypeId:3,
+                price:req.body.type3
+            }))
+        )
+        }
+    )
+}
+const addClaim=(req,res)=>{
+    CarClaim.findAll().then(claim=>{
+        res.json(claim)
+    })
+}
+const getEditInsure=(req,res)=>{
 
+}
+const editInsure=(req,res)=>{
+    CarClaim.findAll().then(claim=>{
+        res.json(claim)
+    })
+}
 module.exports = {
 
     getCarinsuranceType,
@@ -366,7 +412,12 @@ module.exports = {
     deleteUser,
     getCarYear,
     getCarBrand,
-
+    dashboardData,
+    claim,
+    addClaim,
+    addCar,
+    editInsure,
+    getEditInsure,
 };
 
 

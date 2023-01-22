@@ -11,6 +11,7 @@ const RiskLocalization = require("../models").RiskLocalization
 const bcrypt = require("bcryptjs");
 require("dotenv").config();
 const jwt = require("jsonwebtoken");
+const {decode} = require("jsonwebtoken");
 const User = require("../models").Customer
 const getCarinsuranceType = async (req, res) => {
     try {
@@ -423,11 +424,12 @@ const newInsure = (req, res) => {
                     carModelId:car.id,
                     carInsuranceTypeId:req.body.type
                 }}).then(insure=>{
+                    let discount = (1-(0.3*Math.random()))
                 CustomerInsurance.create({
                     customerId:req.body.customerId,
                     insuranceId:insure.id,
                     insuranceType:parseInt(req.body.type),
-                    priceFinal:Math.round(insure.price*0.3*Math.random()),
+                    priceFinal:Math.round(insure.price*discount),
                     status:"Active",
                     riskPersonalId:1,
                     riskLocalizationId:1,
@@ -437,8 +439,7 @@ const newInsure = (req, res) => {
                     province:req.body.province,
                 })
                     .then((insur) => {
-                        console.log(insur)
-                        res.status(200).json({status: insure.price});
+                        res.status(200).json({price: insure.price,discount:discount});
                     })
                     .catch((err) => {
                         console.log(err)
@@ -452,6 +453,36 @@ const newInsure = (req, res) => {
 
 
 };
+const dashboardData=(req,res)=>{
+    user={}
+    const bearerHeader = req.headers["authorization"];
+    if (typeof bearerHeader !== "undefined") {
+        const bearer = bearerHeader.split(" ");
+        const bearerToken = bearer[1];
+        req.token = bearerToken;
+    }
+
+    jwt.verify(req.token, process.env.JWT_SECRET, (err, decodedUser) => {
+        if (err || !decodedUser)
+            return res.status(401).json({error: "Unauthorized Request"});
+
+        user = decodedUser;
+        console.log(user)
+    });
+
+        CustomerInsurance.findAll({
+            where:{customerId:user.id}
+        }).then(insure=> {
+            res.json(insure)
+        })
+
+
+}
+const claim=(req,res)=>{
+    CarClaim.findAll({where:{customerId:user.id}}).then(claim=>{
+        res.json(claim)
+    })
+}
 module.exports = {
 
     getCarinsuranceType,
@@ -470,6 +501,8 @@ module.exports = {
     getCarYear,
     getCarBrand,
     newInsure,
+    dashboardData,
+    claim,
 };
 
 
