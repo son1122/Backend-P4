@@ -6,11 +6,13 @@ const bodyParser = require("body-parser").json();
 const jwt = require("jsonwebtoken");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
-
+const corsOptions={
+    credentials:true
+}
 const app = express();
 const routes = require("./routes");
 
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(bodyParser);
 app.use(cookieParser());
 app.use(express.static("public"));
