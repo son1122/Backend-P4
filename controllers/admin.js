@@ -1,4 +1,4 @@
-const { where } = require("sequelize");
+const {where} = require("sequelize");
 const CarModel = require("../models").CarModel
 const CarInsuranceId = require("../models").CarInsuranceId
 const CustomerInsurance = require("../models").CustomerInsurance
@@ -10,30 +10,30 @@ const bcrypt = require("bcryptjs");
 require("dotenv").config();
 const jwt = require("jsonwebtoken");
 const User = require("../models").Admin
-const getCarinsuranceType= async (req, res) => {
+const getCarinsuranceType = async (req, res) => {
     try {
         await CarInsuranceType.findAll({
             // attributes: ["name", "id", "img", "price"],
         }).then((fruit) => {
-            console.log(fruit)
+            // console.log(fruit)
             res.json(fruit);
         });
     } catch (err) {
-        console.log(err);
-        res.status(500).send({ message: "Menuitem not found." });
+        // console.log(err);
+        res.status(500).send({message: "Menuitem not found."});
     }
 };
-const getCarInsuranceId= async (req, res) => {
+const getCarInsuranceId = async (req, res) => {
     try {
         await CarInsuranceId.findAll({
             // attributes: ["name", "id", "img", "price"],
         }).then((fruit) => {
-            console.log(fruit)
+            // console.log(fruit)
             res.json(fruit);
         });
     } catch (err) {
-        console.log(err);
-        res.status(500).send({ message: "Menuitem not found." });
+        // console.log(err);
+        res.status(500).send({message: "Menuitem not found."});
     }
 };
 // const getCarModel= async (req, res) => {
@@ -57,15 +57,15 @@ const getCarInsuranceId= async (req, res) => {
 //         res.status(500).send({ message: "Menuitem not found." });
 //     }
 // };
-const getCarYear= async (req, res) => {
+const getCarYear = async (req, res) => {
     try {
         await CarModel.findAll({
             attributes: ["year"],
         }).then((array) => {
             var resArr = [];
-            array.filter(function(item){
-                var i = resArr.findIndex(x => (x.year== item.year));
-                if(i <= -1){
+            array.filter(function (item) {
+                var i = resArr.findIndex(x => (x.year == item.year));
+                if (i <= -1) {
                     resArr.push(item);
                 }
                 return null;
@@ -74,21 +74,21 @@ const getCarYear= async (req, res) => {
 
         });
     } catch (err) {
-        console.log(err);
-        res.status(500).send({ message: "Menuitem not found." });
+        // console.log(err);
+        res.status(500).send({message: "Menuitem not found."});
     }
 };
-const getCarBrand= async (req, res) => {
+const getCarBrand = async (req, res) => {
     try {
         await CarModel.findAll({
             attributes: ["brand"],
-            where:{year:req.params.year}
+            where: {year: req.params.year}
         }).then((array) => {
-            console.log(array)
+            // console.log(array)
             var resArr = [];
-            array.filter(function(item){
-                var i = resArr.findIndex(x => (x.brand== item.brand));
-                if(i <= -1){
+            array.filter(function (item) {
+                var i = resArr.findIndex(x => (x.brand == item.brand));
+                if (i <= -1) {
                     resArr.push(item);
                 }
                 return null;
@@ -97,11 +97,11 @@ const getCarBrand= async (req, res) => {
 
         });
     } catch (err) {
-        console.log(err);
-        res.status(500).send({ message: "Menuitem not found." });
+        // console.log(err);
+        res.status(500).send({message: "Menuitem not found."});
     }
 };
-const getCarModel= async (req, res) => {
+const getCarModel = async (req, res) => {
     try {
         await CarModel.findAll({
             // limit:10
@@ -109,60 +109,60 @@ const getCarModel= async (req, res) => {
             res.json(array);
         });
     } catch (err) {
-        console.log(err);
-        res.status(500).send({ message: "Menuitem not found." });
+        // console.log(err);
+        res.status(500).send({message: "Menuitem not found."});
     }
 };
-const getLocation= async (req, res) => {
+const getLocation = async (req, res) => {
     try {
         await LocationId.findAll({
             // attributes: ["name", "id", "img", "price"],
         }).then((fruit) => {
-            console.log(fruit)
+            // console.log(fruit)
             res.json(fruit);
         });
     } catch (err) {
-        console.log(err);
-        res.status(500).send({ message: "Menuitem not found." });
+        // console.log(err);
+        res.status(500).send({message: "Menuitem not found."});
     }
 };
-const getCustomer= async (req, res) => {
+const getCustomer = async (req, res) => {
     try {
         await Customer.findAll({
             // attributes: ["name", "id", "img", "price"],
         }).then((fruit) => {
-            console.log(fruit)
+            // console.log(fruit)
             res.json(fruit);
         });
     } catch (err) {
-        console.log(err);
-        res.status(500).send({ message: "Menuitem not found." });
+        // console.log(err);
+        res.status(500).send({message: "Menuitem not found."});
     }
 };
-const getCarClaim= async (req, res) => {
+const getCarClaim = async (req, res) => {
     try {
         await CarClaim.findAll({
             // attributes: ["name", "id", "img", "price"],
         }).then((fruit) => {
-            console.log(fruit)
+            // console.log(fruit)
             res.json(fruit);
         });
     } catch (err) {
-        console.log(err);
-        res.status(500).send({ message: "Menuitem not found." });
+        // console.log(err);
+        res.status(500).send({message: "Menuitem not found."});
     }
 };
-const getCustomerInsurance= async (req, res) => {
+const getCustomerInsurance = async (req, res) => {
     try {
         await CustomerInsurance.findAll({
             // attributes: ["name", "id", "img", "price"],
         }).then((fruit) => {
-            console.log(fruit)
+            // console.log(fruit)
             res.json(fruit);
         });
     } catch (err) {
-        console.log(err);
-        res.status(500).send({ message: "Menuitem not found." });
+        // console.log(err);
+        res.status(500).send({message: "Menuitem not found."});
     }
 };
 const signup = (req, res) => {
@@ -186,7 +186,7 @@ const signup = (req, res) => {
                     );
 
                     // res.cookie("jwt", token)
-                    res.status(200).json({ status: "signUp" });
+                    res.status(200).json({status: "signUp"});
                 })
                 .catch((err) => {
                     res.send(`error ${err}`);
@@ -248,9 +248,9 @@ const verify = (req, res) => {
     }
     jwt.verify(req.token, process.env.JWT_SECRET, (err, decodedUser) => {
         if (err || !decodedUser) {
-            return res.status(401).json({ status: "Unauthorized Request" });
+            return res.status(401).json({status: "Unauthorized Request"});
         } else {
-            return res.status(200).json({ status: "authorized Request" });
+            return res.status(200).json({status: "authorized Request"});
         }
     });
 };
@@ -264,10 +264,10 @@ const test = (req, res) => {
 
     jwt.verify(req.token, process.env.JWT_SECRET, (err, decodedUser) => {
         if (err || !decodedUser)
-            return res.status(401).json({ error: "Unauthorized Request" });
+            return res.status(401).json({error: "Unauthorized Request"});
 
         req.user = decodedUser;
-        User.findOne({ where: { username: decodedUser.username } }).then((resu) => {
+        User.findOne({where: {username: decodedUser.username}}).then((resu) => {
             console.log(resu)
             res.json({
                 username: resu.username,
@@ -289,7 +289,7 @@ const edit = (req, res) => {
 
     jwt.verify(req.token, process.env.JWT_SECRET, (err, decodedUser) => {
         if (err || !decodedUser)
-            return res.status(401).json({ error: "Unauthorized Request" });
+            return res.status(401).json({error: "Unauthorized Request"});
 
         req.user = decodedUser;
         return res.json("ok");
@@ -310,9 +310,10 @@ const edit = (req, res) => {
                         lastname: req.body.lastname,
                     },
                     {
-                        where: { username: req.user.username },
+                        where: {username: req.user.username},
                     }
-                ).then((r) => {});
+                ).then((r) => {
+                });
             });
         });
     } else {
@@ -325,9 +326,10 @@ const edit = (req, res) => {
                 lastname: req.body.lastname,
             },
             {
-                where: { username: req.user.username },
+                where: {username: req.user.username},
             }
-        ).then((r) => {});
+        ).then((r) => {
+        });
     }
 };
 const deleteUser = async (req, res) => {
@@ -340,86 +342,86 @@ const deleteUser = async (req, res) => {
 
     jwt.verify(req.token, process.env.JWT_SECRET, (err, decodedUser) => {
         if (err || !decodedUser)
-            return res.status(401).json({ error: "Unauthorized Request" });
+            return res.status(401).json({error: "Unauthorized Request"});
 
         req.user = decodedUser;
-        User.destroy({ where: { id: decodedUser.id } });
+        User.destroy({where: {id: decodedUser.id}});
     });
 };
-const dashboardData=(req,res)=>{
-    user={}
-    CustomerInsurance.findAll({
-    }).then(insure=> {
+const dashboardData = (req, res) => {
+    user = {}
+    CustomerInsurance.findAll({}).then(insure => {
         res.json(insure)
     })
 }
-const claim=(req,res)=>{
-    CarClaim.findAll().then(claim=>{
+const claim = (req, res) => {
+    CarClaim.findAll().then(claim => {
         res.json(claim)
     })
 }
-const addCar=(req,res)=>{
+const addCar = (req, res) => {
     CarModel.create({
-        year:req.body.year,
-        model:req.body.model,
-        brand:req.body.brand
-    }).then(e=>{
-        CarInsuranceId.create({
-            carModelId:e.dataValues.id,
-            carInsuranceTypeId:1,
-            price:req.body.type1
-        }).then(
+        year: req.body.year,
+        model: req.body.model,
+        brand: req.body.brand
+    }).then(e => {
             CarInsuranceId.create({
-                carModelId:e.dataValues.id,
-                carInsuranceTypeId:2,
-                price:req.body.type2
-            }).then(        CarInsuranceId.create({
-                carModelId:e.dataValues.id,
-                carInsuranceTypeId:3,
-                price:req.body.type3
-            }))
-        )
+                carModelId: e.dataValues.id,
+                carInsuranceTypeId: 1,
+                price: req.body.type1
+            }).then(
+                CarInsuranceId.create({
+                    carModelId: e.dataValues.id,
+                    carInsuranceTypeId: 2,
+                    price: req.body.type2
+                }).then(CarInsuranceId.create({
+                    carModelId: e.dataValues.id,
+                    carInsuranceTypeId: 3,
+                    price: req.body.type3
+                }))
+            )
         }
     )
 }
-const addClaim=(req,res)=>{
+const addClaim = (req, res) => {
     CustomerInsurance.findOne({
-        where:{id:req.body.id},
-        include:[
+        where: {id: req.body.id},
+        include: [
             {
-                model:Customer,
-                model:CarInsuranceId,
+                model: Customer,
+                model: CarInsuranceId,
             }
         ]
-    }).then(insure=>{
+    }).then(insure => {
         console.log(insure)
         CarClaim.create({
-            priceClaim:req.body.price,
-            insuranceId:req.body.id,
-            status:"finish",
-            customerId:insure.customerId,
-            carModelId:insure.CarInsuranceId.dataValues.carModelId
+            priceClaim: req.body.price,
+            insuranceId: req.body.id,
+            status: "finish",
+            customerId: insure.customerId,
+            carModelId: insure.CarInsuranceId.dataValues.carModelId
         })
     })
 }
-const getEditInsure=(req,res)=>{
+const getEditInsure = (req, res) => {
     console.log(req.body)
-    if(req.body.id!=""){
-    try {
-        CarInsuranceId.findAll({
-            where:{carModelId:req.body.id},
-            include: [
-                {
-                    model: CarModel,
-                }]
-        }).then(ans=>res.json(ans))
-    }catch (e) {
+    if (req.body.id != "") {
+        try {
+            CarInsuranceId.findAll({
+                where: {carModelId: req.body.id},
+                include: [
+                    {
+                        model: CarModel,
+                    }]
+            }).then(ans => res.json(ans))
+        } catch (e) {
 
-    }}else
-    res.json({states:"none"})
+        }
+    } else
+        res.json({states: "none"})
 }
-const editInsure=(req,res)=>{
-    CarClaim.findAll().then(claim=>{
+const editInsure = (req, res) => {
+    CarClaim.findAll().then(claim => {
         res.json(claim)
     })
 }

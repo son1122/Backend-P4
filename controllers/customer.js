@@ -18,11 +18,11 @@ const getCarinsuranceType = async (req, res) => {
         await CarInsuranceType.findAll({
             // attributes: ["name", "id", "img", "price"],
         }).then((fruit) => {
-            console.log(fruit)
+            // console.log(fruit)
             res.json(fruit);
         });
     } catch (err) {
-        console.log(err);
+        // console.log(err);
         res.status(500).send({message: "Menuitem not found."});
     }
 };
@@ -31,11 +31,11 @@ const getCarInsuranceId = async (req, res) => {
         await CarInsuranceId.findAll({
             // attributes: ["name", "id", "img", "price"],
         }).then((fruit) => {
-            console.log(fruit)
+            // console.log(fruit)
             res.json(fruit);
         });
     } catch (err) {
-        console.log(err);
+        // console.log(err);
         res.status(500).send({message: "Menuitem not found."});
     }
 };
@@ -77,7 +77,7 @@ const getCarYear = async (req, res) => {
 
         });
     } catch (err) {
-        console.log(err);
+        // console.log(err);
         res.status(500).send({message: "Menuitem not found."});
     }
 };
@@ -87,7 +87,7 @@ const getCarBrand = async (req, res) => {
             attributes: ["brand"],
             where: {year: req.params.year}
         }).then((array) => {
-            console.log(array)
+            // console.log(array)
             var resArr = [];
             array.filter(function (item) {
                 var i = resArr.findIndex(x => (x.brand == item.brand));
@@ -100,7 +100,7 @@ const getCarBrand = async (req, res) => {
 
         });
     } catch (err) {
-        console.log(err);
+        // console.log(err);
         res.status(500).send({message: "Menuitem not found."});
     }
 };
@@ -114,7 +114,7 @@ const getCarModel = async (req, res) => {
 
         });
     } catch (err) {
-        console.log(err);
+        // console.log(err);
         res.status(500).send({message: "Menuitem not found."});
     }
 };
@@ -123,11 +123,11 @@ const getLocation = async (req, res) => {
         await LocationId.findAll({
             // attributes: ["name", "id", "img", "price"],
         }).then((fruit) => {
-            console.log(fruit)
+            // console.log(fruit)
             res.json(fruit);
         });
     } catch (err) {
-        console.log(err);
+        // console.log(err);
         res.status(500).send({message: "Menuitem not found."});
     }
 };
@@ -136,7 +136,7 @@ const getCustomer = async (req, res) => {
         await Customer.findAll({
             // attributes: ["name", "id", "img", "price"],
         }).then((fruit) => {
-            console.log(fruit)
+            // console.log(fruit)
             res.json(fruit);
         });
     } catch (err) {
@@ -414,32 +414,36 @@ const newInsure = (req, res) => {
     jwt.verify(req.token, process.env.JWT_SECRET, (err, decodedUser) => {
         req.body.customerId = decodedUser.id
         console.log(decodedUser)
-        CarModel.findOne({where:{
-                brand:req.body.brand,
-                model:req.body.model,
-                year:req.body.year
-            }}).then(car=>{
+        CarModel.findOne({
+            where: {
+                brand: req.body.brand,
+                model: req.body.model,
+                year: req.body.year
+            }
+        }).then(car => {
             console.log(car)
-            CarInsuranceId.findOne({where:{
-                    carModelId:car.id,
-                    carInsuranceTypeId:req.body.type
-                }}).then(insure=>{
-                    let discount = (1-(0.3*Math.random()))
+            CarInsuranceId.findOne({
+                where: {
+                    carModelId: car.id,
+                    carInsuranceTypeId: req.body.type
+                }
+            }).then(insure => {
+                let discount = (1 - (0.3 * Math.random()))
                 CustomerInsurance.create({
-                    customerId:req.body.customerId,
-                    insuranceId:insure.id,
-                    insuranceType:parseInt(req.body.type),
-                    priceFinal:Math.round(insure.price*discount),
-                    status:"Active",
-                    riskPersonalId:1,
-                    riskLocalizationId:1,
-                    startDate:new Date(),
-                    endDate:new Date(),
-                    plate:req.body.plate,
-                    province:req.body.province,
+                    customerId: req.body.customerId,
+                    insuranceId: insure.id,
+                    insuranceType: parseInt(req.body.type),
+                    priceFinal: Math.round(insure.price * discount),
+                    status: "Active",
+                    riskPersonalId: 1,
+                    riskLocalizationId: 1,
+                    startDate: new Date(),
+                    endDate: new Date(),
+                    plate: req.body.plate,
+                    province: req.body.province,
                 })
                     .then((insur) => {
-                        res.status(200).json({price: insure.price,discount:discount});
+                        res.status(200).json({price: insure.price, discount: discount});
                     })
                     .catch((err) => {
                         console.log(err)
@@ -453,8 +457,8 @@ const newInsure = (req, res) => {
 
 
 };
-const dashboardData=(req,res)=>{
-    user={}
+const dashboardData = (req, res) => {
+    user = {}
     const bearerHeader = req.headers["authorization"];
     if (typeof bearerHeader !== "undefined") {
         const bearer = bearerHeader.split(" ");
@@ -470,17 +474,17 @@ const dashboardData=(req,res)=>{
         console.log(user)
     });
 
-        CustomerInsurance.findAll({
-            where:{customerId:user.id},
-            attributes:['id','insuranceId','insuranceType','priceFinal','plate','province','endDate']
-        }).then(insure=> {
-            res.json(insure)
-        })
+    CustomerInsurance.findAll({
+        where: {customerId: user.id},
+        attributes: ['id', 'insuranceId', 'insuranceType', 'priceFinal', 'plate', 'province', 'endDate']
+    }).then(insure => {
+        res.json(insure)
+    })
 
 
 }
-const claim=(req,res)=>{
-    user={}
+const claim = (req, res) => {
+    user = {}
     const bearerHeader = req.headers["authorization"];
     if (typeof bearerHeader !== "undefined") {
         const bearer = bearerHeader.split(" ");
@@ -495,7 +499,7 @@ const claim=(req,res)=>{
         user = decodedUser;
         console.log(user)
     });
-    CarClaim.findAll({where:{customerId:user.id}}).then(claim=>{
+    CarClaim.findAll({where: {customerId: user.id}}).then(claim => {
         res.json(claim)
     })
 }

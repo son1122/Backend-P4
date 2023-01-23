@@ -1,6 +1,6 @@
 'use strict';
 const {
-  Model
+    Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
     class Customer extends Model {
@@ -17,9 +17,9 @@ module.exports = (sequelize, DataTypes) => {
                 foreignKey: "customerId"
             })
             Customer.belongsToMany(models.CustomerInsurance, {
-                through:"CustomerInsurance",
-                foreignKey:"customerId",
-                otherKey:"insuranceId",
+                through: "CustomerInsurance",
+                foreignKey: "customerId",
+                otherKey: "insuranceId",
             })
         }
     }

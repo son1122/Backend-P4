@@ -21,6 +21,6 @@ router.get("/dashboarddata", ctrl.admin.dashboardData);
 router.get("/claim", ctrl.admin.claim);
 router.post("/addcar", ctrl.admin.addCar);
 router.post("/claim", ctrl.admin.addClaim);
-router.put('/insure',ctrl.admin.editInsure)
-router.post('/geteditinsure',ctrl.admin.getEditInsure)
+router.put('/insure', ctrl.admin.editInsure)
+router.post('/geteditinsure', ctrl.admin.getEditInsure)
 module.exports = router;

@@ -6,8 +6,8 @@ const bodyParser = require("body-parser").json();
 const jwt = require("jsonwebtoken");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
-const corsOptions={
-    credentials:true
+const corsOptions = {
+    credentials: true
 }
 const app = express();
 const routes = require("./routes");
@@ -48,5 +48,5 @@ app.use("/admin", routes.admin);
 app.use("/customer", routes.customer);
 
 app.listen(process.env.PORT, () => {
-    console.log(`Listening on port ${process.env.PORT}`);
+    // console.log(`Listening on port ${process.env.PORT}`);
 });
