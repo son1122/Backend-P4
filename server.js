@@ -45,7 +45,6 @@ app.use("/admin", routes.admin);
 // app.use("/api", verifyToken, routes.api);
 app.use("/customer", routes.customer);
 
-
 app.listen(process.env.PORT, () => {
     console.log(`Listening on port ${process.env.PORT}`);
 });

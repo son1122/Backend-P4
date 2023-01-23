@@ -383,12 +383,40 @@ const addCar=(req,res)=>{
     )
 }
 const addClaim=(req,res)=>{
-    CarClaim.findAll().then(claim=>{
-        res.json(claim)
+    CustomerInsurance.findOne({
+        where:{id:req.body.id},
+        include:[
+            {
+                model:Customer,
+                model:CarInsuranceId,
+            }
+        ]
+    }).then(insure=>{
+        console.log(insure)
+        CarClaim.create({
+            priceClaim:req.body.price,
+            insuranceId:req.body.id,
+            status:"finish",
+            customerId:insure.customerId,
+            carModelId:insure.CarInsuranceId.dataValues.carModelId
+        })
     })
 }
 const getEditInsure=(req,res)=>{
+    console.log(req.body)
+    if(req.body.id!=""){
+    try {
+        CarInsuranceId.findAll({
+            where:{carModelId:req.body.id},
+            include: [
+                {
+                    model: CarModel,
+                }]
+        }).then(ans=>res.json(ans))
+    }catch (e) {
 
+    }}else
+    res.json({states:"none"})
 }
 const editInsure=(req,res)=>{
     CarClaim.findAll().then(claim=>{

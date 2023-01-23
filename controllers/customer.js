@@ -471,7 +471,8 @@ const dashboardData=(req,res)=>{
     });
 
         CustomerInsurance.findAll({
-            where:{customerId:user.id}
+            where:{customerId:user.id},
+            attributes:['id','insuranceId','insuranceType','priceFinal','plate','province','endDate']
         }).then(insure=> {
             res.json(insure)
         })
