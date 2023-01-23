@@ -36,60 +36,86 @@ In order to archieve the user and company stories above i need to plan more on w
 <h1 style="font-size:300%;"><img width="100" alt="Screenshot 2565-11-16 at 14 05 55" src="https://fact-link.com/home/dhipaya/logo.png"> Dhipaya</h1>
 
 
-This Website is for customer to explore a information on dhipaya insurance company
+This Backend Server is use for CRUD Query to Postgres SQL Data base and provide Restful API
 
 <h3>Feature</h3>
 
-      1. Static Website on REACT JS
-      2. Animation
-      3. Responsive
-      4. Hyperlink to Customer Portal
-      
-<h2>Preview</h2>
-<img width="1184" alt="Screenshot 2566-01-23 at 07 33 17" src="https://user-images.githubusercontent.com/76699506/213949005-5329cd4b-691b-4ce3-b3d1-e5289acc9568.png">
-<img width="1182" alt="Screenshot 2566-01-23 at 07 33 01" src="https://user-images.githubusercontent.com/76699506/213949001-c01cdcf5-d4e0-4e05-a7fe-c90252d26c7e.png">
-<img width="1275" alt="Screenshot 2566-01-23 at 07 32 29" src="https://user-images.githubusercontent.com/76699506/213948957-f360c153-dbc9-4f2e-ac47-fcc0a3873c7e.png">
-
-<img width="1217" alt="Screenshot 2566-01-23 at 07 32 10" src="https://user-images.githubusercontent.com/76699506/213948946-d87d7a15-8890-4614-a9ff-b4cba7e7a28d.png">
-<img width="1202" alt="Screenshot 2566-01-23 at 07 32 43" src="https://user-images.githubusercontent.com/76699506/213948975-c10d5525-1a0f-411a-8bc4-b9aa729254e0.png">
-
-
-
-
-Netlify Deploy URL : [https://customer-wongsatorn.netlify.app/)
+      1. Authentication for Customer and Admin
+      2. Full CRUD
+      3. RESTful API
+      4. Deploy on bit.io and cyclic.sh
 
 <h2>My Planing Step</h2>
 
-<h3>1. List All requirement and draw a Wireframe</h3>
-
-
-
+<h3>1. List All requirement</h3>
 
 <h3>2. make a List of technical difficulties and study all of them</h3>
 
-    2.1 How ANT Design Work
+    2.1 What API Need for Fronted at each website
     
-    2.2 UI/UX For website
-    
-    2.3 Setup Library for Deploye
-
 <h3>3. make a simple step plan</h3>
 
-    3.1 initial project with create-react-app
+    3.1 initial project
     
-    3.2 Set up with ant design library
+    3.2 Setup Enviroment variable / add simple API / add Migrate file
     
     3.3 Test package and run on Local Machine
     
-    3.4 Deploy on Netlify.com Using CI/CD Pipeline
+    3.4 Deploy on bit.io and cyclic.sh with CI/CD Pipeline
     
-    3.5 Create new ui and customize component
+    3.5 Test on deploy Environment
     
-    3.6 Add Content
+    3.6 Add More Function
     
     3.7 Deply New Change
     
 <h2>Code Explain</h2>
+<img width="833" alt="Screenshot 2566-01-23 at 08 41 43" src="https://user-images.githubusercontent.com/76699506/213953015-e600ed66-0229-451e-ae77-03cd5259ba34.png">
+
+Path and Method of API
+
+      GET /dashboard/getinsurancetype
+      GET /dashboard/getinsuranceid
+      GET /dashboard/getcarmodel
+      GET /admin/getinsurancetype
+      GET /admin/getinsuranceid
+      GET /admin/getcarmodel/:year
+      GET /admin/getcarmodel
+      GET /admin/getcustomerinsurance
+      GET /admin/getcarclaim
+      GET /admin/getlocation
+      GET /admin/getcustomer
+      GET /admin
+      POST /admin/signup
+      POST /admin/login
+      GET /admin/verify
+      PUT /admin/edit
+      DELETE /admin/user
+      GET /admin/getcaryear
+      GET /admin/dashboarddata
+      GET /admin/claim
+      POST /admin/addcar
+      POST /admin/claim
+      PUT /admin/insure
+      POST /admin/geteditinsure
+      GET /customer/getinsurancetype
+      GET /customer/getinsuranceid
+      GET /customer/getcarmodel/:year
+      GET /customer/getcarmodel/:year/:brand
+      GET /customer/getcustomerinsurance
+      GET /customer/getcarclaim
+      GET /customer/getlocation
+      GET /customer/getcustomer
+      GET /customer
+      POST /customer/signup
+      POST /customer/login
+      GET /customer/verify
+      PUT /customer/edit
+      DELETE /customer/user
+      GET /customer/getcaryear
+      POST /customer/newinsure
+      GET /customer/dashboarddata
+      GET /customer/claim
 
 
 
@@ -97,18 +123,20 @@ Netlify Deploy URL : [https://customer-wongsatorn.netlify.app/)
 
 What would you do differently?
 
-    1.Add more customization to UI/UX
-
+    1.Prepare more on Plan
+    
+    2.Redesign all Database Model and association
+    
+    3.Consider NonSQl For faster development
+    
 What are you most proud of?
 
-    1. Study and Use UI Library
-
+    1. Make It Work
+    
 What would you do next?
 
-    1. Add Langague Localization and connect to translation service
+    1. Add More Fundtion on API
 
 What did you learn?
 
-    1. Ant Design Library (Ant Group) - The world's second most popular React UI library
-            An enterprise-class UI design language and React UI library with a set of high-quality 
-    React components, one of best React UI library for enterprises.
+    1. Sequelize
