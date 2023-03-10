@@ -323,6 +323,7 @@ const test = (req, res) => {
             return res.status(401).json({error: "Unauthorized Request"});
 
         req.user = decodedUser;
+
         User.findOne({where: {username: decodedUser.username}}).then((resu) => {
             console.log(resu)
             res.json({
@@ -331,6 +332,7 @@ const test = (req, res) => {
                 phone: resu.phone,
                 firstname: resu.firstname,
                 lastname: resu.lastname,
+
             });
         });
     });
@@ -382,7 +384,7 @@ const edit = (req, res) => {
                 lastname: req.body.lastname,
             },
             {
-                where: {username: req.user.username},
+                where: {username: req.user. username},
             }
         ).then((r) => {
         });
